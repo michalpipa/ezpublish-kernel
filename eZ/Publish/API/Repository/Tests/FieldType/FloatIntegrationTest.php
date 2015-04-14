@@ -347,29 +347,3 @@ class FloatIntegrationTest extends SearchBaseIntegrationTest
         return 25.59;
     }
 }
-
-/**
- * Float field type is not searchable in Legacy search engine, but will
- * be searchable with Solr and Elasticsearch search engines.
- *
- * This is implementation simply extends the original implementation in order to
- * define the field type as searchable, so that it can be tested.
- */
-class Float extends Type
-{
-    public function isSearchable()
-    {
-        return true;
-    }
-
-    static protected function checkValueType( $value )
-    {
-        $fieldTypeFQN = "eZ\\Publish\\Core\\FieldType\\Float\\Value";
-        $valueFQN = substr_replace( $fieldTypeFQN, "Value", strrpos( $fieldTypeFQN, "\\" ) + 1 );
-
-        if ( !$value instanceof $valueFQN )
-        {
-            throw new InvalidArgumentType( "\$value", $valueFQN, $value );
-        }
-    }
-}
