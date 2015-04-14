@@ -21,7 +21,7 @@ use eZ\Publish\API\Repository\Values\Content\Content;
  * @group integration
  * @group field-type
  */
-class RelationFieldTypeIntegrationTest extends RelationBaseIntegrationTest
+class RelationFieldTypeIntegrationTest extends RelationSearchBaseIntegrationTest
 {
     /**
      * Get name of tested field type
@@ -362,5 +362,15 @@ class RelationFieldTypeIntegrationTest extends RelationBaseIntegrationTest
                 $this->getValidCreationFieldData()
             ),
         );
+    }
+
+    protected function getValidSearchValueOne()
+    {
+        return 10;
+    }
+
+    protected function getValidSearchValueTwo()
+    {
+        return 4;
     }
 }
